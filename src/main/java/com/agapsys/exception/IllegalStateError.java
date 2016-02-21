@@ -16,23 +16,25 @@
 
 package com.agapsys.exception;
 
-import junit.framework.Assert;
-import org.junit.Test;
+import static com.agapsys.exception.Defs.format;
 
 /**
  * @author Leandro Oliveira (leandro@agapsys.com)
  */
-public class IllegalArgumentExceptionTest {
-	@Test
-	public void test() {
-		IllegalArgumentException exception;
-		final Throwable cause = new RuntimeException();
-		
-		exception = new IllegalArgumentException("Hello %s!", "world");
-		Assert.assertEquals("Hello world!", exception.getMessage());		
-		
-		exception = new IllegalArgumentException(cause, "Hello %s!", "world");
-		Assert.assertEquals("Hello world!", exception.getMessage());
-		Assert.assertEquals(cause, exception.getCause());
+public class IllegalStateError extends java.lang.IllegalStateException {
+
+	public IllegalStateError() {}
+
+	public IllegalStateError(String message, Object...msgArgs) {
+		super(format(message, msgArgs));
 	}
+
+	public IllegalStateError(Throwable cause, String message, Object...msgArgs) {
+		super(format(message, msgArgs), cause);
+	}
+
+	public IllegalStateError(Throwable cause) {
+		super(cause);
+	}
+
 }

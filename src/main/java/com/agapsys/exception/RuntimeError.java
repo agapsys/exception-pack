@@ -16,23 +16,24 @@
 
 package com.agapsys.exception;
 
+import static com.agapsys.exception.Defs.format;
+
 /**
  * @author Leandro Oliveira (leandro@agapsys.com)
  */
-public class IllegalArgumentException extends RuntimeException {
+public class RuntimeError extends java.lang.RuntimeException {
 
-	public IllegalArgumentException() {}
+	public RuntimeError() {}
 
-	public IllegalArgumentException(String message, Object...msgArgs) {
-		super(message, msgArgs);
+	public RuntimeError(String message, Object... msgArgs) {
+		super(format(message, msgArgs));
 	}
 
-	public IllegalArgumentException(Throwable cause, String message, Object...msgArgs) {
-		super(cause, message, msgArgs);
+	public RuntimeError(Throwable cause, String message, Object... msgArgs) {
+		super(format(message, msgArgs), cause);
 	}
 
-	public IllegalArgumentException(Throwable cause) {
+	public RuntimeError(Throwable cause) {
 		super(cause);
 	}
-	
 }

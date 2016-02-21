@@ -21,19 +21,20 @@ import static com.agapsys.exception.Defs.format;
 /**
  * @author Leandro Oliveira (leandro@agapsys.com)
  */
-public class CheckedException extends Exception {
+public class IllegalArgumentError extends java.lang.IllegalArgumentException {
 
-	public CheckedException() {}
+	public IllegalArgumentError() {}
 
-	public CheckedException(String message, Object...msgArgs) {
+	public IllegalArgumentError(String message, Object...msgArgs) {
 		super(format(message, msgArgs));
 	}
 
-	public CheckedException(Throwable cause, String message, Object...msgArgs) {
+	public IllegalArgumentError(Throwable cause, String message, Object...msgArgs) {
 		super(format(message, msgArgs), cause);
 	}
 
-	public CheckedException(Throwable cause) {
+	public IllegalArgumentError(Throwable cause) {
 		super(cause);
 	}
+	
 }

@@ -16,24 +16,23 @@
 
 package com.agapsys.exception;
 
-import static com.agapsys.exception.Defs.format;
+import junit.framework.Assert;
+import org.junit.Test;
 
 /**
  * @author Leandro Oliveira (leandro@agapsys.com)
  */
-public class RuntimeException extends java.lang.RuntimeException {
-
-	public RuntimeException() {}
-
-	public RuntimeException(String message, Object... msgArgs) {
-		super(format(message, msgArgs));
-	}
-
-	public RuntimeException(Throwable cause, String message, Object... msgArgs) {
-		super(format(message, msgArgs), cause);
-	}
-
-	public RuntimeException(Throwable cause) {
-		super(cause);
+public class IllegalStateErrorTest {
+	@Test
+	public void test() {
+		IllegalStateError exception;
+		final Throwable cause = new RuntimeError();
+		
+		exception = new IllegalStateError("Hello %s!", "world");
+		Assert.assertEquals("Hello world!", exception.getMessage());		
+		
+		exception = new IllegalStateError(cause, "Hello %s!", "world");
+		Assert.assertEquals("Hello world!", exception.getMessage());
+		Assert.assertEquals(cause, exception.getCause());
 	}
 }

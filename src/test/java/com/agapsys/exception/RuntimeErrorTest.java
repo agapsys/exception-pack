@@ -22,16 +22,16 @@ import org.junit.Test;
 /**
  * @author Leandro Oliveira (leandro@agapsys.com)
  */
-public class RuntimeExceptionTest {
+public class RuntimeErrorTest {
 	@Test
 	public void test() {
-		RuntimeException exception;
-		final Throwable cause = new RuntimeException();
+		RuntimeError exception;
+		final Throwable cause = new RuntimeError();
 		
-		exception = new RuntimeException("Hello %s!", "world");
+		exception = new RuntimeError("Hello %s!", "world");
 		Assert.assertEquals("Hello world!", exception.getMessage());		
 		
-		exception = new RuntimeException(cause, "Hello %s!", "world");
+		exception = new RuntimeError(cause, "Hello %s!", "world");
 		Assert.assertEquals("Hello world!", exception.getMessage());
 		Assert.assertEquals(cause, exception.getCause());
 	}
